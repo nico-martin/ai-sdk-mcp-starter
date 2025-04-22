@@ -24,7 +24,7 @@ const App: React.FC = () => {
             }
           );
           const data = await res.json();
-          setAnswer(data.answer);
+          setAnswer(data.text);
           setThinking(false);
         }}
       >

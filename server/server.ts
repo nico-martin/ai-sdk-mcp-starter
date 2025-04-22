@@ -26,15 +26,17 @@ app.post("/prompt", async (req, res) => {
       .json({ error: "Invalid input: prompt must be a string." });
   }
 
+  const tools = await mcpClient.tools();
   const result = await generateText({
     system: "You are a helpful AI assistant.",
     model: google("models/gemini-2.0-flash-exp"),
     prompt,
-    tools: await mcpClient.tools(),
-    maxSteps: 5,
+    tools,
+    maxSteps: 10,
   });
 
-  res.json({ receivedPrompt: prompt, answer: result.text });
+  console.log(result.toolCalls);
+  res.json(result);
 });
 
 app.get("/", (req, res) => res.json({ running: true }));
