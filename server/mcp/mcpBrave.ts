@@ -1,4 +1,9 @@
-// https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search
+/**
+ * https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search
+ *
+ * Requires and env BRAVE_API_KEY
+ * https://api-dashboard.search.brave.com/app/keys
+ */
 import { experimental_createMCPClient as createMCPClient } from "ai";
 import { Experimental_StdioMCPTransport as StdioMCPTransport } from "ai/mcp-stdio";
 
