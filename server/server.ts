@@ -3,10 +3,9 @@ import { generateText } from "ai";
 import cors from "cors";
 import express from "express";
 
-import mcpClient from "./mcpGithub";
 import "./setupEnv";
 
-const API_KEY = process.env.VITE_GOOGLE_GENERATIVE_AI_API_KEY;
+const API_KEY = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
 
 const google = createGoogleGenerativeAI({
   apiKey: API_KEY,
@@ -27,10 +26,9 @@ app.post("/prompt", async (req, res) => {
   }
 
   const result = await generateText({
-    system: "you are a helpful AI assistant.",
+    system: "You are a helpful AI assistant.",
     model: google("models/gemini-2.0-flash-exp"),
     prompt,
-    tools: await mcpClient.tools(),
     maxSteps: 5,
   });
 
