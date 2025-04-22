@@ -1,0 +1,1 @@
+# AI SDK MCP Client Starter
